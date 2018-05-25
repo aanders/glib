@@ -91,7 +91,8 @@ libgmodule = shared_library('gmodule-2.0',
   install : true,
   include_directories : [configinc, gmoduleinc],
   dependencies : [libdl_dep, libglib_dep],
-  c_args : ['-DG_LOG_DOMAIN="GModule"', '-DG_DISABLE_DEPRECATED'] + glib_hidden_visibility_args)
+  c_args : ['-DG_LOG_DOMAIN="GModule"', '-DG_DISABLE_DEPRECATED'] + glib_hidden_visibility_args,
+  install_rpath: get_option('install-rpath'))
 
 libgmodule_dep = declare_dependency(link_with : libgmodule,
   include_directories : gmoduleinc)
