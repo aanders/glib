@@ -231,7 +231,8 @@ libglib = shared_library('glib-2.0',
   include_directories : configinc,
   link_with : [charset_lib, gnulib_lib],
   dependencies : [pcre, thread_dep, libintl, librt] + libiconv + platform_deps,
-  c_args : ['-DG_LOG_DOMAIN="GLib"', '-DGLIB_COMPILATION'] + pcre_static_args + glib_hidden_visibility_args
+  c_args : ['-DG_LOG_DOMAIN="GLib"', '-DGLIB_COMPILATION'] + pcre_static_args + glib_hidden_visibility_args,
+  install_rpath : get_option('install-rpath')
 )
 
 libglib_dep = declare_dependency(link_with : libglib,
